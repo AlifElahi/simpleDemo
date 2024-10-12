@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/simple-demo-app'),
+      dir: require('path').join(__dirname, './coverage/demo'),
       subdir: '.',
       reporters: [
         { type: 'html' },
@@ -35,9 +35,12 @@ module.exports = function (config) {
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_WARN,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browserConsoleLogOptions: { level: 'warn' },
+    browsers: ['ChromeHeadless'],
+    browserDisconnectTimeout: 60000,
+		browserNoActivityTimeout: 60000,
     singleRun: false,
     restartOnFileChange: true
   });
